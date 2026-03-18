@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko"> <!-- 문서 형식과 언어를 선언합니다 -->
+<head> <!-- 메타데이터(문서 제목, 문자셋, 스타일 등)를 담는 영역 -->
+  <meta charset="UTF-8"> <!-- 문자 인코딩을 UTF-8로 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 모바일 화면 대응 -->
+  <title>HTML5 기본 구조 연습</title> <!-- 브라우저 탭에 표시되는 제목 -->
+  <style> /* 최소한의 CSS: 구조가 보이게 가장자리와 배경을 줍니다 */
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.4; margin: 0; padding: 0; }
+    .section { border: 1px solid #999; padding: 12px; margin: 12px; border-radius: 8px; background: #fafafa; }
+    header, footer { background: #222; color: #fff; padding: 12px; }
+    nav a { margin-right: 12px; color: #06f; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+    .code { font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace; background: #eee; padding: 2px 4px; border-radius: 4px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ccc; padding: 6px; }
+  </style>
+</head>
+<body> <!-- 실제 페이지에 보여지는 내용을 담는 영역 -->
+  <header class="section"> <!-- 대표적인 페이지 상단 영역 -->
+    <h1>HTML5 기본 구조 연습</h1> <!-- 제목 태그: 가장 중요한 제목 -->
+    <p>HTML 문서의 기본 요소들을 예시로 포함합니다. 각 태그 옆에 주석으로 설명을 달았습니다.</p>
+    <nav> <!-- 네비게이션(링크) 모음 -->
+      <a href="#headings">제목(h1~h6)</a>
+      <a href="#paragraphs">단락(p)</a>
+      <a href="#list">리스트(ul, ol, li)</a>
+      <a href="#table">표(table)</a>
+    </nav>
+  </header>
+
+  <main class="section"> <!-- 문서의 주된 내용 영역 -->
+    <section id="headings"> <!-- 섹션 구분 영역 -->
+      <h2>헤딩 태그 (h1 ~ h6)</h2> <!-- 두 번째로 중요한 제목 -->
+      <h3>h3 제목</h3> <!-- h3: 세 번째로 중요한 제목 -->
+      <h4>h4 제목</h4> <!-- h4: 네 번째로 중요한 제목 -->
+      <h5>h5 제목</h5> <!-- h5: 다섯 번째로 중요한 제목 -->
+      <h6>h6 제목</h6> <!-- h6: 여섯 번째이자 가장 낮은 수준의 제목 -->
+    </section>
+
+    <section id="paragraphs"> <!-- 단락과 인라인 요소 예시 -->
+      <h2>단락과 인라인 요소</h2>
+      <p>이것은 <span class="code">span</span> 태그를 사용한 <span style="color: #c00;">인라인</span> 예시입니다. <span>span</span>은 줄 바꿈 없이 텍스트 안에 특정 부분을 묶을 때 씁니다.</p>
+      <div>이것은 <span class="code">div</span> 태그로 감싼 블록 요소입니다. <strong>div</strong>는 블록 레벨 요소로, 보통 섹션을 나눌 때 씁니다.</div>
+    </section>
+
+    <section id="list"> <!-- 리스트 예시 -->
+      <h2>리스트 (ul, ol, li)</h2>
+      <p>순서가 없는 목록은 <span class="code">ul</span>과 <span class="code">li</span>로 구성됩니다.</p>
+      <ul>
+        <li>첫 번째 항목</li> <!-- 리스트 항목 -->
+        <li>두 번째 항목</li>
+        <li>세 번째 항목</li>
+      </ul>
+      <p>순서가 있는 목록은 <span class="code">ol</span>과 <span class="code">li</span>로 구성됩니다.</p>
+      <ol>
+        <li>첫 번째 단계</li>
+        <li>두 번째 단계</li>
+        <li>세 번째 단계</li>
+      </ol>
+    </section>
+
+    <section id="links"> <!-- 링크 및 이미지 예시 -->
+      <h2>링크(a)와 이미지(img)</h2>
+      <p>여기를 클릭하면 <a href="https://www.example.com" target="_blank" rel="noopener">Example.com</a>으로 이동합니다.</p>
+      <p>이미지 예시 (img):</p>
+<img src="https://fronty.com/static/uploads/seo/img.png" alt="샘플 이미지" style="display:block; border:1px solid #ccc; **max-width: 100%; height: auto;**" />    </section>
+
+    <section id="table"> <!-- 표 예시 -->
+      <h2>표(table)</h2>
+      <table>
+        <thead>
+          <tr> <!-- 테이블 행 -->
+            <th>헤더 1</th> <!-- 헤더 셀 -->
+            <th>헤더 2</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>셀 1</td> <!-- 데이터 셀 -->
+            <td>셀 2</td>
+          </tr>
+          <tr>
+            <td>셀 3</td>
+            <td>셀 4</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="section"> <!-- 페이지 맨 아래에 위치한 영역 -->
+    <p>이 문서는 HTML5 기본 구조 학습용 예시입니다.</p>
+  </footer>
+
+  <script> /* 최소 JS: 콘솔에 메시지를 출력해 동작 확인 */
+    console.log('html_practice.html이 로드되었습니다.');
+  </script>
+</body>
+</html>

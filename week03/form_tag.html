@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>폼 태그 테스트 예제</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f6f7fb;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    form {
+      max-width: 900px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      padding: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    fieldset {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      background: #fafafa;
+    }
+    legend {
+      font-weight: 600;
+      padding: 0 0.5rem;
+    }
+    .field {
+      display: grid;
+      grid-template-columns: minmax(120px, 1fr) minmax(250px, 2fr);
+      gap: 0.8rem 1.2rem;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .field label {
+      font-size: 0.95rem;
+      color: #333;
+    }
+    .field small {
+      display: block;
+      color: #666;
+      font-size: 0.85rem;
+      margin-top: 0.15rem;
+    }
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .actions {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+    button {
+      padding: 0.6rem 1.1rem;
+      border: 1px solid #3b6ef7;
+      border-radius: 5px;
+      background: #3b6ef7;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button[type="reset"] {
+      background: #fff;
+      color: #3b6ef7;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <h1>HTML5 폼 태그 샘플</h1>
+
+  <form action="#" method="get">
+    <fieldset>
+      <legend>기본 입력</legend>
+
+      <div class="field">
+        <label for="text">text (일반 텍스트 입력)</label>
+        <div>
+          <input id="text" name="text" type="text" value="예시 텍스트" />
+          <small>일반 문자열을 입력합니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="password">password (비밀번호)</label>
+        <div>
+          <input id="password" name="password" type="password" value="password123" />
+          <small>입력값이 숨겨집니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="email">email (이메일 주소)</label>
+        <div>
+          <input id="email" name="email" type="email" value="example@domain.com" />
+          <small>이메일 형식을 검증합니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="url">url (웹 주소)</label>
+        <div>
+          <input id="url" name="url" type="url" value="https://example.com" />
+          <small>URL 형식을 검증합니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="tel">tel (전화번호)</label>
+        <div>
+          <input id="tel" name="tel" type="tel" value="010-1234-5678" />
+          <small>전화번호 입력에 적합합니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="hidden">hidden (숨김 필드)</label>
+        <div>
+          <input id="hidden" name="hidden" type="hidden" value="숨겨진값" />
+          <small>화면에 표시되지 않는 값.</small>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>숫자 / 범위 / 날짜</legend>
+
+      <div class="field">
+        <label for="number">number (숫자)</label>
+        <div>
+          <input id="number" name="number" type="number" value="42" min="0" max="100" />
+          <small>숫자 입력 + 증가/감소 버튼.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="range">range (슬라이더)</label>
+        <div>
+          <input id="range" name="range" type="range" value="50" min="0" max="100" />
+          <small>값을 슬라이더로 선택합니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="date">date (날짜)</label>
+        <div>
+          <input id="date" name="date" type="date" value="2026-03-18" />
+          <small>달력에서 날짜 선택.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="time">time (시간)</label>
+        <div>
+          <input id="time" name="time" type="time" value="12:34" />
+          <small>시간 입력.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="datetime">datetime-local (날짜+시간)</label>
+        <div>
+          <input id="datetime" name="datetime" type="datetime-local" value="2026-03-18T12:34" />
+          <small>로컬 날짜/시간을 함께 선택.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="month">month (월)</label>
+        <div>
+          <input id="month" name="month" type="month" value="2026-03" />
+          <small>연도-월 형식 선택.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="week">week (주)</label>
+        <div>
+          <input id="week" name="week" type="week" value="2026-W12" />
+          <small>연도-주 단위 선택.</small>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>선택 / 텍스트 영역 / 파일</legend>
+
+      <div class="field">
+        <label for="select">select (드롭다운)</label>
+        <div>
+          <select id="select" name="select">
+            <option value="">선택하세요</option>
+            <option value="option1" selected>옵션 1</option>
+            <option value="option2">옵션 2</option>
+            <option value="option3">옵션 3</option>
+          </select>
+          <small>미리 정의된 선택지 중 하나를 고릅니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="textarea">textarea (여러 줄 입력)</label>
+        <div>
+          <textarea id="textarea" name="textarea">여기에 자유롭게 입력하세요.</textarea>
+          <small>긴 텍스트 입력에 사용합니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="file">file (파일 업로드)</label>
+        <div>
+          <input id="file" name="file" type="file" />
+          <small>파일을 선택하여 업로드합니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="color">color (색 선택)</label>
+        <div>
+          <input id="color" name="color" type="color" value="#1e90ff" />
+          <small>색상을 선택합니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="datalist">datalist (자동완성)</label>
+        <div>
+          <input id="datalist" name="datalist" list="cities" value="서울" />
+          <datalist id="cities">
+            <option value="서울"></option>
+            <option value="부산"></option>
+            <option value="대구"></option>
+            <option value="인천"></option>
+            <option value="광주"></option>
+          </datalist>
+          <small>자동완성 항목을 제공합니다.</small>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>체크박스 / 라디오</legend>
+
+      <div class="field">
+        <label>checkbox (여러 선택 가능)</label>
+        <div>
+          <label><input type="checkbox" name="checkboxes" value="a" checked /> 옵션 A</label><br />
+          <label><input type="checkbox" name="checkboxes" value="b" /> 옵션 B</label><br />
+          <label><input type="checkbox" name="checkboxes" value="c" /> 옵션 C</label>
+          <small>여러 항목을 동시에 선택할 수 있습니다.</small>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>radio (단일 선택)</label>
+        <div>
+          <label><input type="radio" name="radios" value="1" checked /> 1번</label><br />
+          <label><input type="radio" name="radios" value="2" /> 2번</label><br />
+          <label><input type="radio" name="radios" value="3" /> 3번</label>
+          <small>한 그룹에서 하나만 선택할 수 있습니다.</small>
+        </div>
+      </div>
+    </fieldset>
+
+    <div class="actions">
+      <button type="submit">submit</button>
+      <button type="reset">reset</button>
+    </div>
+  </form>
+</body>
+</html>

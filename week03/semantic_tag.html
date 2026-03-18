@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>시맨틱 태그 블로그 예시</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+    }
+    header,
+    nav,
+    main,
+    section,
+    article,
+    aside,
+    footer,
+    figure {
+      border: 1px solid #ccc;
+      background: #fff;
+      padding: 1rem;
+      margin: 0.5rem;
+    }
+    nav {
+      background: #e8f0ff;
+    }
+    footer {
+      background: #f0f0f0;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 1rem;
+      max-width: 980px;
+      margin: 1rem auto;
+    }
+    main {
+      display: grid;
+      gap: 1rem;
+    }
+    .post-meta {
+      font-size: 0.9rem;
+      color: #555;
+    }
+    mark {
+      background: #fffbcc;
+      padding: 0.1rem 0.2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>블로그 제목</h1>
+    <p class="post-meta">
+      <time datetime="2026-03-18">2026년 3월 18일</time> 작성
+    </p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">홈</a></li>
+      <li><a href="#">소개</a></li>
+      <li><a href="#">카테고리</a></li>
+      <li><a href="#">연락처</a></li>
+    </ul>
+  </nav>
+
+  <div class="layout">
+    <main>
+      <section>
+        <h2>오늘의 포스트</h2>
+        <article>
+          <h3>시맨틱 태그로 구조 만들기</h3>
+          <p>
+            웹 페이지를 <mark>명확한 구조</mark>로 만들면 접근성과 유지보수가 좋아집니다.
+          </p>
+          <figure>
+            <img src="https://via.placeholder.com/640x240" alt="예시 이미지" />
+            <figcaption>시맨틱 태그를 보여주는 예시 이미지</figcaption>
+          </figure>
+          <p>
+            <details>
+              <summary>추가 읽기</summary>
+              이 부분은 접혀 있다가 사용자가 열어볼 수 있는 내용입니다. 자세한 정보가 들어갑니다.
+            </details>
+          </p>
+        </article>
+      </section>
+
+      <aside>
+        <h2>사이드바</h2>
+        <p>관련 글, 광고, 링크 등을 넣는 영역입니다.</p>
+      </aside>
+    </main>
+
+    <footer>
+      <p>© 2026 예시 블로그. 모든 권리 보유.</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>블록 요소 vs 인라인 요소 시각화</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      padding: 16px;
+      margin: 0;
+      background: #f7f7f7;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    .section {
+      border: 2px solid #444;
+      border-radius: 8px;
+      padding: 14px;
+      background: #fff;
+      margin-bottom: 16px;
+    }
+
+    .section h2 {
+      margin-top: 0;
+    }
+
+    .box {
+      border: 2px dashed rgba(0, 0, 0, 0.3);
+      background: rgba(0, 128, 255, 0.05);
+      padding: 10px;
+      margin-bottom: 12px;
+    }
+
+    .inline-sample {
+      border: 2px dotted rgba(255, 0, 0, 0.6);
+      background: rgba(255, 0, 0, 0.08);
+      padding: 4px 8px;
+      margin: 0 2px;
+      display: inline-block;
+    }
+
+    .hint {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body> <!-- 실제 화면에 보이는 콘텐츠를 담는 요소 -->
+  <h1>블록 요소 vs 인라인 요소</h1> <!-- 페이지 최상위 제목 -->
+  <p>아래 예제는 동일한 내용 안에서 <strong>블록 요소</strong>와 <strong>인라인 요소</strong>의 배치 차이를 시각적으로 보여줍니다.</p>
+
+  <section class="section">
+    <h2>블록 요소 예시</h2>
+    <div class="box">
+      <p>이 문단(<code>&lt;p&gt;</code>)은 블록 요소입니다. 전체 너비를 차지하고, 다음 요소는 아래로 내려갑니다.</p>
+    </div>
+
+    <div class="box">
+      <section>
+        <p>이 섹션(<code>&lt;section&gt;</code>)도 블록 요소입니다.</p>
+        <div>이 div(<code>&lt;div&gt;</code>)도 블록 요소라서 아래로 쌓입니다.</div>
+      </section>
+    </div>
+
+    <div class="hint">블록 요소들은 기본적으로 너비가 부모 요소를 채우며 세로로 쌓입니다.</div>
+  </section>
+
+  <section class="section">
+    <h2>인라인 요소 예시</h2>
+    <div class="box">
+      <p>
+        이 문장 안에는 <span class="inline-sample">span</span>과
+        <a class="inline-sample" href="#">a 링크</a>,
+        <strong class="inline-sample">strong</strong>이 포함되어 있습니다.
+        인라인 요소는 줄 바꿈 없이 한 줄에 이어서 배치됩니다.
+      </p>
+    </div>
+    <div class="box">
+      <p>
+        이미지는 인라인 요소로 취급되어 텍스트와 같은 라인에 배치됩니다:
+        <img src="data:image/svg+xml,%3Csvg%20xmlns%3D%5C%22http%3A//www.w3.org/2000/svg%5C%22%20width%3D%5C%2280%5C%22%20height%3D%5C%2240%5C%22%3E%3Crect%20width%3D%5C%2280%5C%22%20height%3D%5C%2240%5C%22%20fill%3D%5C%22%23ddd%5C%22/%3E%3Ctext%20x%3D%5C%2240%5C%22%20y%3D%5C%2224%5C%22%20font-size%3D%5C%2210%5C%22%20font-family%3D%5C%22sans-serif%5C%22%20text-anchor%3D%5C%22middle%5C%22%20fill%3D%5C%22999%5C%22%3Eimg%3C/text%3E%3C/svg%3E" alt="이미지 예시" style="vertical-align: middle; border: 1px solid #ccc;" /> <!-- data URI 이미지 사용 -->
+        (이 이미지는 인라인 요소처럼 다루어집니다.)
+      </p>
+    </div>
+    <div class="hint">인라인 요소는 텍스트와 함께 흐르며, 줄 바꿈이 자동으로 발생하지 않습니다.</div>
+  </section>
+
+  <section class="section">
+    <h2>인라인-블록 비교</h2>
+    <p>
+      아래 두 박스는 동일한 <code>display</code> 속성을 가진 요소들입니다.
+      <span class="inline-sample" style="display: block; background: rgba(0,128,0,0.1);">display: block;</span>
+      <span class="inline-sample" style="display: inline; background: rgba(128,0,128,0.1);">display: inline;</span>
+    </p>
+    <div class="hint">CSS <code>display</code> 속성을 통해 요소를 블록/인라인으로 바꿀 수 있습니다.</div>
+  </section>
+</body>
+</html>

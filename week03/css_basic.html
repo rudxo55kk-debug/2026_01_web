@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Basic 예제</title>
+  <style>
+    /* 태그 선택자: 모든 <h1>에 적용 */
+    h1 {
+      color: #2a52be;          /* 헥스 코드 */
+      text-align: center;      /* 텍스트 정렬 */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 글꼴 */
+      font-weight: 700;        /* 굵기 */
+      letter-spacing: 2px;     /* 글자 간격 */
+      text-decoration: underline; /* 텍스트 장식 */
+      margin-bottom: 0.5em;
+    }
+
+    /* 클래스 선택자: .highlight 클래스를 가진 모든 요소에 적용 */
+    .highlight {
+      background-color: rgb(255, 244, 179);  /* rgb */
+      color: #333333;
+      padding: 0.6em;
+      border-radius: 8px;
+    }
+
+    /* ID 선택자: #special-title에만 적용 */
+    #special-title {
+      color: rgba(255, 69, 0, 0.9); /* rgba */
+      font-size: 2rem;              /* 폰트 크기 */
+      font-style: italic;           /* 기울임 */
+      line-height: 1.3;             /* 줄 높이 */
+      text-align: left;
+      border-left: 4px solid #ff4500;
+      padding-left: 0.6em;
+    }
+
+    /* 어트리뷰트 선택자: target="_blank"를 가진 링크에 적용 */
+    a[target="_blank"] {
+      color: #006400;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* 하위 선택자(후손 선택자): .section 내부의 <p> 모두 */
+    .section p {
+      color: #222222;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 0.6em 0;
+    }
+
+    /* 자식 선택자: .list-section의 바로 아래 <ul>의 <li>만 */
+    .list-section > ul > li {
+      color: #1a1a1a;
+      font-size: 1rem;
+      font-weight: 500;
+      margin: 0.3em 0;
+    }
+
+    /* 인접 형제 선택자: <h2> 다음에 오는 <p>에만 */
+    h2 + p {
+      background-color: rgba(173, 216, 230, 0.3);
+      padding: 0.6em;
+      border-radius: 5px;
+    }
+
+    /* 일반 형제 선택자: <h3> 이후 모든 <p>에 적용 */
+    h3 ~ p {
+      color: #4b0082;
+      font-style: oblique;
+      letter-spacing: 1px;
+    }
+
+    /* 선택자 조합 예시: class + 태그 */
+    p.note {
+      background-color: #f0f8ff;
+      border: 1px dashed #8392a5;
+      padding: 0.6em;
+      font-size: 0.95rem;
+    }
+
+    /* 추가: 다중 선택자 (콤마) */
+    .footer, .footer p {
+      color: #666666;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 3em;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS 셀렉터 & 텍스트 스타일 데모</h1>
+
+  <section class="section">
+    <h2 id="special-title">ID 선택자 예시 (특정 제목)</h2>
+    <p class="highlight">이 문장은 <code>.highlight</code> 클래스 선택자가 적용된 예시입니다. 배경색과 패딩이 있어 시각적으로 눈에 띕니다.</p>
+    <p>이 문장은 단순한 문단입니다. <code>.section p</code> 하위 선택자 규칙이 적용되어 있습니다.</p>
+    <p class="note">이 문장은 <code>p.note</code> 선택자로 스타일이 적용된 노트입니다. 글꼴 크기, 배경색, 테두리 스타일이 다르게 보입니다.</p>
+  </section>
+
+  <section class="list-section">
+    <h2>자식 선택자 예시</h2>
+    <ul>
+      <li>첫 번째 항목 (자식 선택자 적용)</li>
+      <li>두 번째 항목 (자식 선택자 적용)</li>
+      <li>세 번째 항목 (자식 선택자 적용)</li>
+    </ul>
+    <p>이 문장은 <code>.list-section &gt; ul &gt; li</code>와는 다르게 스타일이 적용되지 않습니다.</p>
+  </section>
+
+  <section class="link-section">
+    <h2>어트리뷰트 선택자 예시</h2>
+    <p>아래 링크는 <code>a[target="_blank"]</code> 어트리뷰트 선택자에 의해 스타일이 적용됩니다.</p>
+    <p><a href="https://www.example.com" target="_blank">새 탭으로 열리는 링크</a></p>
+    <p><a href="https://www.example.com">같은 탭에서 여는 링크 (적용 없음)</a></p>
+  </section>
+
+  <section>
+    <h3>형제 선택자 예시</h3>
+    <p>이 문장은 <code>h3 ~ p</code> 일반 형제 선택자에 의해 스타일이 변경됩니다.</p>
+    <p>또 다른 문장도 동일한 형제 선택자 규칙을 따릅니다.</p>
+  </section>
+
+  <footer class="footer">
+    <p>이 예제는 태그, 클래스, ID, 어트리뷰트, 하위/자식/형제 선택자 및 색상/텍스트 스타일 속성을 시각적으로 구분하여 보여줍니다.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flex Display 레이아웃 비교 (div vs semantic)</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background-color: #f4f6f8;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 1.6rem;
+      text-align: center;
+      color: #0f172a;
+    }
+
+    .example {
+      margin-bottom: 3rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      border-radius: 12px;
+      overflow: hidden;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08);
+    }
+
+    .example h2 {
+      margin: 0;
+      padding: 1rem;
+      font-size: 1.2rem;
+      background-color: rgba(59, 130, 246, 0.12);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    /* 공통 레이아웃: 전체 레이아웃을 flex로 배치 */
+    .flex-layout {
+      display: flex;
+      flex-direction: column;
+      min-height: 320px;
+    }
+
+    .flex-layout .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem;
+      gap: 1rem;
+      background-color: rgba(226, 232, 240, 0.7);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .flex-layout .top-bar .title {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    .flex-layout .top-bar .nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: 999px;
+      background-color: rgba(59, 130, 246, 0.18);
+      color: #1e40af;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .flex-layout .content {
+      display: flex;
+      gap: 1rem;
+      flex: 1;
+      padding: 1rem;
+    }
+
+    .flex-layout .main {
+      flex: 2;
+      background-color: rgba(236, 253, 245, 0.7);
+      padding: 1rem;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 10px;
+    }
+
+    .flex-layout .aside {
+      flex: 1;
+      background-color: rgba(224, 242, 254, 0.7);
+      padding: 1rem;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 10px;
+    }
+
+    .flex-layout .footer {
+      padding: 0.9rem 1rem;
+      background-color: rgba(243, 244, 246, 0.9);
+      border-top: 1px solid rgba(148, 163, 184, 0.5);
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(15, 23, 42, 0.8);
+    }
+
+    /* 반응형: 작은 화면에서 content를 세로 정렬 */
+    @media (max-width: 720px) {
+      .flex-layout .content {
+        flex-direction: column;
+      }
+    }
+
+    .note {
+      font-size: 0.9rem;
+      margin: 0;
+      padding: 0.5rem 1rem 1rem;
+      color: rgba(15, 23, 42, 0.85);
+    }
+
+    .note strong {
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Flex 레이아웃: div vs semantic 태그 비교</h1>
+
+  <div class="example">
+    <h2>① div만 사용한 Flex 레이아웃</h2>
+    <div class="flex-layout" aria-label="div 기반 레이아웃">
+      <div class="top-bar">
+        <p class="title">문서 제목</p>
+        <a class="nav-link" href="#" role="button">이동 메뉴</a>
+      </div>
+      <div class="content">
+        <div class="main">
+          <h3>본문 영역</h3>
+          <p>이 영역은 문서의 주요 내용을 표시하는 부분입니다. flex를 사용하여 사이드바와 함께 배치됩니다.</p>
+          <p>flex 레이아웃에서는 <code>flex: 2</code>와 같은 값을 주어 상대적인 크기를 조정할 수 있습니다.</p>
+        </div>
+        <div class="aside">
+          <h3>추가 문서</h3>
+          <p>사이드바는 부가적인 링크, 참고사항, 광고 등을 넣는 데 사용할 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="footer">
+        <p>푸터: 저작권, 연락처, 저작권 정보 등을 표기합니다.</p>
+      </div>
+    </div>
+    <p class="note"><strong>설명:</strong> 위 구조는 div 요소와 클래스를 이용해 header/nav/main/aside/footer를 흉내 낸 예제입니다.</p>
+  </div>
+
+  <div class="example">
+    <h2>② 시맨틱 태그를 사용한 Flex 레이아웃</h2>
+    <div class="flex-layout" aria-label="시맨틱 태그 기반 레이아웃">
+      <header class="top-bar">
+        <h1 class="title">문서 제목</h1>
+        <nav>
+          <a class="nav-link" href="#" role="button">이동 메뉴</a>
+        </nav>
+      </header>
+      <main class="content">
+        <article class="main">
+          <h2>본문 영역</h2>
+          <p>이 영역은 문서의 주요 내용을 표시하는 부분입니다. flex를 사용하여 사이드바와 함께 배치됩니다.</p>
+          <p>semantic 태그를 사용하면 구조가 명확해지고 접근성(스크린 리더 등)도 향상됩니다.</p>
+        </article>
+        <aside class="aside">
+          <h2>추가 문서</h2>
+          <p>사이드바는 부가적인 링크, 참고사항, 광고 등을 넣는 데 사용할 수 있습니다.</p>
+        </aside>
+      </main>
+      <footer class="footer">
+        <p>푸터: 저작권, 연락처, 저작권 정보 등을 표기합니다.</p>
+      </footer>
+    </div>
+    <p class="note"><strong>설명:</strong> semantic 요소를 사용하면 마크업이 의미를 전달하므로, 검색엔진 최적화(SEO)와 접근성이 개선됩니다.</p>
+  </div>
+</body>
+</html>

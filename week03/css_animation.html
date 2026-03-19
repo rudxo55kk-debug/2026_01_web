@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Transition & Animation 예제</title>
+  <style>
+    /* 기본 텍스트 및 레이아웃 */
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 1.5rem;
+      background-color: #f4f6f8;
+      color: #111827;
+      line-height: 1.6;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #0f172a;
+    }
+
+    section {
+      background-color: #ffffff;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: #1e3a8a;
+    }
+
+    section p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color: rgba(15, 23, 42, 0.8);
+    }
+
+    .example-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: flex-start;
+      margin-top: 1rem;
+    }
+
+    .example-box {
+      flex: 1 1 280px;
+      padding: 1.2rem;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      border-radius: 14px;
+      background-color: rgba(236, 239, 241, 0.65);
+      min-width: 280px;
+    }
+
+    .example-box h3 {
+      margin-top: 0;
+      margin-bottom: 0.6rem;
+      font-size: 1.05rem;
+      color: #0f172a;
+    }
+
+    .example-box p {
+      margin: 0;
+      color: rgba(15, 23, 42, 0.75);
+      font-size: 0.95rem;
+    }
+
+    /* -----------------------------
+       Transition 예제
+       - hover 시 부드럽게 변화
+    ----------------------------- */
+
+    /* 버튼 색상 변경 애니메이션 */
+    .btn-transition {
+      display: inline-block;
+      padding: 0.65rem 1.2rem;
+      border-radius: 999px;
+      border: 2px solid rgba(59, 130, 246, 0.8);
+      background-color: rgba(59, 130, 246, 0.9);
+      color: #ffffff;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color 0.25s ease, transform 0.2s ease; /* transition에 적용할 속성 */
+    }
+
+    .btn-transition:hover {
+      background-color: rgba(37, 99, 235, 0.95);
+      transform: translateY(-2px); /* hover 시 살짝 떠오르기 */
+    }
+
+    /* 박스 그림자/크기 변경 transition */
+    .box-transition {
+      width: 180px;
+      height: 180px;
+      background-color: rgba(164, 202, 254, 0.75);
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+      transition: transform 0.25s ease, box-shadow 0.25s ease; /* 이동과 그림자 전환 */
+    }
+
+    .box-transition:hover {
+      transform: scale(1.08); /* 커짐 */
+      box-shadow: 0 18px 35px rgba(15, 23, 42, 0.25);
+    }
+
+    /* 텍스트 색상 전환 */
+    .text-transition {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #0f172a;
+      transition: color 0.3s ease; /* 색상 변화 부드럽게 */
+    }
+
+    .text-transition:hover {
+      color: #2563eb;
+    }
+
+    /* -----------------------------
+       Animation 예제
+       - @keyframes 기반 반복 애니메이션
+    ----------------------------- */
+
+    /* 흔들림 애니메이션 */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      15%, 45%, 75% { transform: translateX(-6px); }
+      30%, 60%, 90% { transform: translateX(6px); }
+    }
+
+    .shake {
+      display: inline-block;
+      padding: 0.6rem 1rem;
+      border-radius: 14px;
+      border: 2px dashed rgba(239, 68, 68, 0.8);
+      background-color: rgba(254, 202, 202, 0.4);
+      color: #b91c1c;
+      font-weight: 700;
+      animation: shake 1.2s ease-in-out infinite; /* 무한 반복 애니메이션 */
+    }
+
+    /* 색상 순환 애니메이션 */
+    @keyframes colorCycle {
+      0% { background-color: rgba(34, 197, 94, 0.4); }
+      50% { background-color: rgba(34, 197, 94, 0.9); }
+      100% { background-color: rgba(34, 197, 94, 0.4); }
+    }
+
+    .color-cycle {
+      width: 100%;
+      height: 120px;
+      border-radius: 14px;
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      animation: colorCycle 3s ease-in-out infinite; /* 색상 변화 반복 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      color: #064e3b;
+    }
+
+    /* 슬라이드 인 애니메이션 */
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-in {
+      opacity: 0;
+      animation: slideIn 0.7s ease-out forwards; /* 첫 로딩 후 한 번 실행 */
+    }
+
+    /* 애니메이션 지연 적용 */
+    .slide-in.delay {
+      animation-delay: 0.35s; /* 각 요소별로 지연시킬 수 있음 */
+    }
+
+  </style>
+</head>
+<body>
+  <h1>CSS Transition & Animation 예제</h1>
+
+  <section>
+    <h2>1. Transition (hover 기반 부드러운 변화)</h2>
+    <p>Transition은 상태 변화를 감지하여 해당 속성을 부드럽게 전환합니다. 주로 <code>:hover</code>, <code>:focus</code> 등에서 사용됩니다.</p>
+
+    <div class="example-row">
+      <div class="example-box">
+        <h3>버튼 색상/크기 전환</h3>
+        <p>버튼에 <code>transition</code>을 적용해, 마우스를 올릴 때 배경색과 위치가 부드럽게 바뀝니다.</p>
+        <a class="btn-transition" href="#">Hover Me</a>
+      </div>
+
+      <div class="example-box">
+        <h3>박스 스케일 전환</h3>
+        <p>박스에 <code>transform: scale()</code>를 사용하여 hover 상태에서 크기를 확대하고 그림자를 진하게 만듭니다.</p>
+        <div class="box-transition"></div>
+      </div>
+
+      <div class="example-box">
+        <h3>텍스트 색상 전환</h3>
+        <p>텍스트에 <code>color</code> 전환을 적용하여 hover 시 색상이 변경되도록 합니다.</p>
+        <p class="text-transition">Hover 하면 색상이 바뀌는 텍스트</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Animation (@keyframes 기반 반복 애니메이션)</h2>
+    <p>@keyframes를 사용하면 복잡한 애니메이션을 정의하고, <code>animation</code> 속성으로 실행할 수 있습니다.</p>
+
+    <div class="example-row">
+      <div class="example-box">
+        <h3>흔들림 애니메이션</h3>
+        <p>버튼처럼 보이는 요소에 <code>shake</code> 애니메이션을 무한 반복하여 주의 환기 효과를 줍니다.</p>
+        <span class="shake">주의!</span>
+      </div>
+
+      <div class="example-box">
+        <h3>색상 순환 애니메이션</h3>
+        <p>백그라운드 색상이 천천히 변하며 숨쉬는 듯한 효과를 만듭니다.</p>
+        <div class="color-cycle">Color cycle</div>
+      </div>
+
+      <div class="example-box">
+        <h3>슬라이드 인 애니메이션</h3>
+        <p>페이지 로드 시 요소가 아래에서 위로 올라오며 투명도 전환을 함께 적용합니다.</p>
+        <div class="slide-in">첫 등장 애니메이션</div>
+        <div class="slide-in delay">0.35초 지연된 애니메이션</div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

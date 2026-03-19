@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS 박스 모델 & 레이아웃 연습</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      padding: 1.2rem;
+      background-color: #f8f9fb;
+      color: #1a1a1a;
+      line-height: 1.5;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 1.4rem;
+      color: #1e3a8a;
+    }
+
+    section {
+      margin-bottom: 2.5rem;
+      padding: 1rem;
+      border: 2px dashed rgba(30, 58, 138, 0.3);
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: #1e40af;
+    }
+
+    /* 박스 모델 기본 예제: content, padding, border, margin을 각각 다르게 적용 */
+    .box-model-demo {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .box-model-demo .box {
+      background-color: #fff;
+      border: 2px solid #4b5563; /* 테두리 */
+      padding: 1rem;            /* 안쪽 여백 */
+      margin: 0.5rem;           /* 바깥 여백 */
+      width: 180px;             /* 콘텐츠 너비 */
+      box-sizing: border-box;   /* padding/border를 width에 포함 */
+    }
+
+    .box-model-demo .box.small {
+      padding: 0.4rem;
+      margin: 0.2rem;
+      border-width: 1px;
+      background-color: rgba(237, 233, 254, 0.8);
+    }
+
+    .box-model-demo .box.large {
+      padding: 1.6rem;
+      margin: 1rem;
+      border-width: 4px;
+      background-color: rgba(254, 242, 235, 0.8);
+    }
+
+    .box-model-demo .box.expanded {
+      width: 240px;
+      background-color: rgba(220, 248, 198, 0.8);
+    }
+
+    /* 레이아웃 예제: display 속성 */
+    .layout-demo {
+      border: 1px solid rgba(107, 114, 128, 0.4);
+      padding: 1rem;
+      border-radius: 10px;
+      background-color: rgba(236, 239, 241, 0.9);
+    }
+
+    /* block: 기본 블록 요소, 줄 전체를 차지 */
+    .layout-demo .block {
+      display: block;
+      background-color: #fde68a;
+      padding: 0.6rem;
+      border: 1px solid #f59e0b;
+      margin-bottom: 0.6rem;
+    }
+
+    /* inline: 콘텐츠만 차지, 높이/너비 적용 불가 */
+    .layout-demo .inline {
+      display: inline;
+      background-color: #a7f3d0;
+      padding: 0.3rem;
+      border: 1px solid #059669;
+    }
+
+    /* inline-block: inline처럼 흐르지만 너비/높이 지정 가능 */
+    .layout-demo .inline-block {
+      display: inline-block;
+      width: 160px;
+      height: 80px;
+      background-color: #bfdbfe;
+      border: 1px solid #3b82f6;
+      margin: 0.4rem;
+      vertical-align: top;
+      text-align: center;
+      padding-top: 0.8rem;
+    }
+
+    /* flex: 자식 요소를 플렉스 박스로 배치 */
+    .layout-demo .flex-container {
+      display: flex;
+      gap: 0.6rem;
+      padding: 0.6rem;
+      background-color: rgba(249, 168, 212, 0.35);
+      border: 1px solid rgba(236, 72, 153, 0.5);
+      flex-wrap: wrap;
+    }
+
+    .layout-demo .flex-item {
+      flex: 1 1 120px;              /* 성장, 축소, 기본 너비 설정 */
+      background-color: rgba(236, 72, 153, 0.2);
+      border: 1px solid rgba(136, 19, 55, 0.5);
+      padding: 0.8rem;
+      text-align: center;
+    }
+
+    /* grid: 2x2 격자 레이아웃 */
+    .layout-demo .grid-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+      padding: 0.6rem;
+      background-color: rgba(168, 85, 247, 0.2);
+      border: 1px solid rgba(126, 34, 206, 0.5);
+    }
+
+    .layout-demo .grid-item {
+      background-color: rgba(168, 85, 247, 0.35);
+      border: 1px solid rgba(109, 40, 217, 0.6);
+      padding: 0.6rem;
+      text-align: center;
+    }
+
+    /* position: static / relative / absolute 예제 */
+    .position-demo {
+      position: relative; /* 자식의 absolute 위치 기준이 됨 */
+      background-color: rgba(34, 197, 94, 0.15);
+      padding: 1.2rem;
+      border: 1px solid rgba(34, 197, 94, 0.5);
+      border-radius: 10px;
+      min-height: 220px;
+    }
+
+    .position-demo .static-box {
+      position: static; /* 기본값: 문서 흐름에 따라 배치 */
+      background-color: rgba(34, 197, 94, 0.18);
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      padding: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .position-demo .relative-box {
+      position: relative; /* 문서 흐름에 남지만 위치를 이동 가능 */
+      top: 12px;    /* 원래 위치에서 아래로 12px 이동 */
+      left: 12px;   /* 원래 위치에서 오른쪽으로 12px 이동 */
+      background-color: rgba(34, 197, 94, 0.25);
+      border: 1px solid rgba(34, 197, 94, 0.7);
+      padding: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .position-demo .absolute-box {
+      position: absolute; /* 가장 가까운 position:not static 부모를 기준 */
+      top: 20px;
+      right: 20px;
+      width: 180px;
+      background-color: rgba(249, 115, 22, 0.25);
+      border: 1px solid rgba(249, 115, 22, 0.7);
+      padding: 0.8rem;
+    }
+
+    /* fixed: 뷰포트(화면)에 고정 */
+    .fixed-box {
+      position: fixed;
+      bottom: 1.2rem;
+      right: 1.2rem;
+      width: 220px;
+      background-color: rgba(59, 130, 246, 0.25);
+      border: 1px solid rgba(59, 130, 246, 0.7);
+      padding: 0.8rem;
+      z-index: 1000; /* 다른 요소 위에 표시 */
+    }
+
+    /* 간단한 설명 박스 */
+    .note-box {
+      font-size: 0.9rem;
+      padding: 0.7rem;
+      border-radius: 8px;
+      border: 1px solid rgba(107, 114, 128, 0.3);
+      background-color: rgba(148, 163, 184, 0.15);
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS 박스 모델 & 레이아웃 실습</h1>
+
+  <section>
+    <h2>1. 박스 모델 (content / padding / border / margin)</h2>
+    <div class="box-model-demo">
+      <div class="box">
+        <strong>기본 박스</strong>
+        <p>content + padding + border + margin이 모두 적용됩니다.</p>
+      </div>
+      <div class="box small">
+        <strong>작은 박스</strong>
+        <p>padding과 margin이 작고 border도 얇습니다.</p>
+      </div>
+      <div class="box large">
+        <strong>큰 박스</strong>
+        <p>padding과 margin, border가 모두 큽니다.</p>
+      </div>
+      <div class="box expanded">
+        <strong>넓은 박스</strong>
+        <p>width가 넓어지고 배경색도 달라집니다.</p>
+      </div>
+    </div>
+    <div class="note-box">
+      <strong>box-sizing: border-box;</strong>를 지정하면 padding과 border가 width에 포함되어 계산되므로, 너비가 예측 가능해집니다.
+    </div>
+  </section>
+
+  <section>
+    <h2>2. display 속성 비교</h2>
+    <div class="layout-demo">
+      <div class="block">display: block (줄 전체를 차지)</div>
+
+      <div class="inline">display: inline (높이/너비가 적용되지 않음)</div>
+      <div class="inline">또 다른 inline 요소</div>
+
+      <div class="inline-block">display: inline-block</div>
+      <div class="inline-block">너비/높이 지정 가능</div>
+
+      <div class="flex-container">
+        <div class="flex-item">flex item 1</div>
+        <div class="flex-item">flex item 2</div>
+        <div class="flex-item">flex item 3</div>
+      </div>
+
+      <div class="grid-container">
+        <div class="grid-item">grid item A</div>
+        <div class="grid-item">grid item B</div>
+        <div class="grid-item">grid item C</div>
+        <div class="grid-item">grid item D</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>3. position: static / relative / absolute / fixed</h2>
+    <div class="position-demo">
+      <div class="static-box">
+        position: static (기본값) - 문서 흐름에 따라 배치됩니다.
+      </div>
+      <div class="relative-box">
+        position: relative; top/left 값으로 이동하지만 문서 흐름에는 남습니다.
+      </div>
+      <div class="absolute-box">
+        position: absolute; 부모 중 position이 설정된 요소를 기준으로 위치가 정해집니다.
+      </div>
+      <div class="note-box">
+        <strong>static</strong>은 기본 위치에 있고, <strong>relative</strong>는 문서 흐름에 남지만 위치가 이동합니다. <strong>absolute</strong>는 문서 흐름에서 벗어나서 부모를 기준으로 위치가 정해집니다.
+      </div>
+    </div>
+
+    <div class="fixed-box">
+      position: fixed; 화면의 특정 위치에 고정되며 스크롤해도 붙어있습니다.
+    </div>
+  </section>
+</body>
+</html>

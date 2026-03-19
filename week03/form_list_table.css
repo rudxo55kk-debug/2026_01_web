@@ -1,0 +1,255 @@
+/* form_list_table.css
+   - 리스트, 표, 폼에 대한 현대적인 스타일 정의
+   - 외부 스타일 시트로 분리하여 재사용 가능하게 구성
+*/
+
+/* 기본 리셋 및 텍스트 스타일 */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  background-color: #fbfcfe;
+  color: #111827;
+}
+
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 2rem 1.2rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  color: #1e3a8a;
+}
+
+section {
+  background-color: #ffffff;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  border-radius: 14px;
+  padding: 1.6rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 10px 20px rgba(15, 23, 42, 0.06);
+}
+
+section h2 {
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #0f172a;
+}
+
+section p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: rgba(15, 23, 42, 0.8);
+}
+
+/* ----------------------------------------
+   리스트 스타일 (ul / ol)
+   - 기본 불릿 제거
+   - 커스텀 마커 (::before, ::marker) 사용
+---------------------------------------- */
+
+ul.custom-bullet,
+ol.custom-counter {
+  padding-left: 0;
+  margin: 0;
+  list-style: none; /* 브라우저 기본 마커 제거 */
+}
+
+ul.custom-bullet li {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+ul.custom-bullet li::before {
+  content: "\2022"; /* 원형 마커 */
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  color: #2563eb;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+ol.custom-counter {
+  counter-reset: item; /* 카운터 초기화 */
+}
+
+ol.custom-counter li {
+  counter-increment: item; /* 항목마다 카운터 증가 */
+  padding-left: 2rem;
+  margin-bottom: 0.6rem;
+  position: relative;
+}
+
+ol.custom-counter li::before {
+  content: counter(item) "."; /* 1. 2. 3. ... */
+  position: absolute;
+  left: 0;
+  color: #9333ea;
+  font-weight: 700;
+}
+
+/* ----------------------------------------
+   표 스타일 (table)
+   - 테두리 통일
+   - 행 호버 강조
+---------------------------------------- */
+
+.table-wrapper {
+  overflow-x: auto; /* 작은 화면에서 가로 스크롤 허용 */
+}
+
+table.styled-table {
+  width: 100%;
+  border-collapse: collapse; /* 테두리 겹치기 제거 */
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  font-size: 0.95rem;
+}
+
+table.styled-table th,
+table.styled-table td {
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  text-align: left;
+}
+
+table.styled-table th {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #0f172a;
+  font-weight: 700;
+}
+
+table.styled-table tbody tr {
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+table.styled-table tbody tr:hover {
+  background-color: rgba(59, 130, 246, 0.18); /* 행 호버 강조 */
+  box-shadow: inset 4px 0 0 rgba(59, 130, 246, 0.35); /* 좌측 강조선 */
+}
+
+/* 줄마다 배경색을 다르게 하여 가독성 향상 */
+table.styled-table tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+table.styled-table tbody tr:nth-child(even) {
+  background-color: rgba(226, 232, 240, 0.3);
+}
+
+/* ----------------------------------------
+   폼 스타일 (form, input, select, textarea, button)
+   - rounded corners, padding, border
+   - 포커스 시 강조 효과
+---------------------------------------- */
+
+.form-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+  color: #111827;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.95rem;
+  color: #111827;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder,
+textarea::placeholder {
+  color: rgba(15, 23, 42, 0.4);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(59, 130, 246, 0.8);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+select {
+  appearance: none; /* 브라우저 기본 화살표 제거 */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath fill='%233B82F6' d='M0 0l5 7 5-7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  background-size: 10px 7px;
+  padding-right: 2.5rem; /* 화살표 여유 */
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical; /* 높이만 조정 가능 */
+}
+
+/* 체크박스 / 라디오 그룹 */
+.field-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.field-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+/* 버튼 스타일 */
+button,
+input[type="submit"] {
+  cursor: pointer;
+  padding: 0.75rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(59, 130, 246, 0.8);
+  background-color: rgba(59, 130, 246, 0.95);
+  color: #ffffff;
+  font-weight: 700;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.25);
+}
+
+button:focus,
+input[type="submit"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+}
+
+/* 보조 텍스트 */
+.small-note {
+  font-size: 0.85rem;
+  color: rgba(15, 23, 42, 0.65);
+  margin-top: 0.25rem;
+}

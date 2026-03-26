@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for 반복문과 if문 예제</title>
+</head>
+<body>
+    <h1>for 반복문과 if문 예제</h1>
+    <div id="result"></div>
+
+    <script>
+        // div 요소 가져오기
+        let resultDiv = document.getElementById('result');
+
+        // 1부터 10까지 for 반복문
+        for (let i = 1; i <= 10; i++) {
+            // if문으로 짝수와 홀수 판별
+            if (i % 2 === 0) {
+                resultDiv.innerHTML += i + "는 짝수입니다.<br>";
+            } else {
+                resultDiv.innerHTML += i + "는 홀수입니다.<br>";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>학생 자기소개 객체</title>
+</head>
+<body>
+    <h1>학생 자기소개</h1>
+    <div id="result"></div>
+
+    <script>
+        const name = prompt("이름을 입력하세요:");
+        const studentId = prompt("학번을 입력하세요:");
+        const major = prompt("전공을 입력하세요:");
+
+        const student = {
+            name: name,
+            studentId: studentId,
+            major: major,
+            introduce: function () {
+                return "안녕하세요. 제 이름은 " + this.name + "이고, 학번은 " + this.studentId + "이며, 전공은 " + this.major + "입니다.";
+            }
+        };
+
+        const resultDiv = document.getElementById("result");
+        resultDiv.textContent = student.introduce();
+    </script>
+</body>
+</html>

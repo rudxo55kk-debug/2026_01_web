@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 변수 선언 예제</title>
+</head>
+<body>
+    <h1>JavaScript 변수 선언 예제</h1>
+    <p>콘솔을 확인하세요.</p>
+
+    <script>
+        // 전역변수: var를 사용해서 이름 선언
+        var globalName = "홍길동";
+
+        // 함수 생성: 지역변수를 사용하여 정보 출력
+        function displayInfo() {
+            // 지역변수: let을 사용해서 나이 선언
+            let localAge = 20;
+
+            // 지역변수: const를 사용해서 학번 선언
+            const localStudentId = "20240001";
+
+            // alert 함수를 이용해서 화면에 출력
+            alert("이름: " + globalName + "\n나이: " + localAge + "\n학번: " + localStudentId);
+        }
+
+        // 함수 호출
+        displayInfo();
+    </script>
+</body>
+</html>

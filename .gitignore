@@ -33,4 +33,4 @@ Thumbs.db
 *.war
 
 #자바 클래스
-.class
+*.class

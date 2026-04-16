@@ -71,5 +71,19 @@
 		"</dependency>"
 		],
 		"description": "jstl dependency"
-	}
+	},
+	"Modern web.xml Header": {
+    "prefix": "webxml4",
+    "body": [
+      "<?xml version=\"1.0\" encoding=\"UTF-8\"?>",
+      "<web-app xmlns=\"http://xmlns.jcp.org/xml/ns/javaee\"",
+      "         xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"",
+      "         xsi:schemaLocation=\"http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd\"",
+      "         version=\"4.0\">",
+      "    <display-name>${1:Archetype Created Web Application or Project Name}</display-name>",
+      "    $0",
+      "</web-app>"
+    ],
+    "description": "Create a modern web.xml 4.0 header"
+  }
 }

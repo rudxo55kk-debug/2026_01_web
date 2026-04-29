@@ -26,11 +26,17 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+    <!-- JSTL API -->
     <dependency>
        <groupId>javax.servlet</groupId>
        <artifactId>jstl</artifactId>
        <version>1.2</version>
+    </dependency>
+    <!-- JSTL 구현체 (Standard Taglib) -->
+    <dependency>
+       <groupId>org.apache.taglibs</groupId>
+       <artifactId>taglibs-standard-impl</artifactId>
+       <version>1.2.5</version>
     </dependency>
   </dependencies>
 

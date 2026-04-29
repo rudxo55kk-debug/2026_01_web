@@ -11,11 +11,13 @@
 <body>
     <h2>1. 변수 설정 (JSTL)</h2>
     <c:set var="name" value="김경태" />
-    <c:set var="age" value="20" />
-    <c:set var="score" value="85.5" />
+    <c:set var="age" value="${20}" />
+    <c:set var="score" value="${85.5}" />
     <c:set var="tokens" value="apple,banana,kiwi" />
-    <c:set var="nums" value="${[1,2,3,4,5]}" />
-    <c:set var="fruits" value="${fn:split('orange,pear,grape,melon', ',')}" />
+    <c:set var="numsStr" value="1,2,3,4,5" />
+    <c:set var="fruitsStr" value="orange,pear,grape,melon" />
+    <c:set var="nums" value="${fn:split(numsStr, ',')}" />
+    <c:set var="fruits" value="${fn:split(fruitsStr, ',')}" />
 
     <h2>2. JSTL 태그로 출력 (왼쪽) / EL로 출력 (오른쪽)</h2>
     <table>
@@ -45,7 +47,7 @@
             </td>
             <td>
                 <strong>EL 조건식 (삼항 연산자)</strong><br>
-                ${age ge 20 ? '성인입니다.' : '미성년자입니다.'}
+                <c:out value="${age ge 20 ? '성인입니다.' : '미성년자입니다.'}" />
             </td>
         </tr>
         <tr>
@@ -59,7 +61,7 @@
             </td>
             <td>
                 <strong>EL로 등급 계산</strong><br>
-                ${score ge 90 ? '등급: A' : (score ge 80 ? '등급: B' : '등급: C 이하')}
+                <c:out value="${score ge 90 ? '등급: A' : (score ge 80 ? '등급: B' : '등급: C 이하')}" />
             </td>
         </tr>
         <tr>
@@ -71,7 +73,7 @@
             </td>
             <td>
                 <strong>EL로 목록 출력 (fn:join 사용)</strong><br>
-                ${fn:join(nums, ', ')}
+                <c:out value="${fn:join(nums, ', ')}" />
             </td>
         </tr>
         <tr>
@@ -83,7 +85,7 @@
             </td>
             <td>
                 <strong>EL로 문자열 배열 출력</strong><br>
-                ${fn:join(fruits, ', ')}
+                <c:out value="${fn:join(fruits, ', ')}" />
             </td>
         </tr>
         <tr>
@@ -95,7 +97,7 @@
             </td>
             <td>
                 <strong>EL로 토큰 표현</strong><br>
-                ${fn:join(fn:split(tokens, ','), ', ')}
+                <c:out value="${fn:join(fn:split(tokens, ','), ', ')}" />
             </td>
         </tr>
     </table>
@@ -106,13 +108,8 @@
         <li>&lt;c:if&gt; / &lt;c:choose&gt;: 조건 처리</li>
         <li>&lt;c:forEach&gt;: 리스트 반복</li>
         <li>&lt;c:forTokens&gt;: 구분자 기반 토큰 반복</li>
-        <li>EL: ${...} 을 사용해 동일한 변수값을 간결하게 출력할 수 있음</li>
+        <li>EL: ${'$'}{...} 을 사용해 동일한 변수값을 간결하게 출력할 수 있음</li>
     </ul>
 
-</body>
-</html>
-<html>
-<body>
-<h2>Hello World!</h2>
 </body>
 </html>

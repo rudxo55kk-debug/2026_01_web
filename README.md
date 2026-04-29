@@ -12,6 +12,54 @@
 ## 🗂️ 저장소 구성
 - `week01/` : 첫 번째 주 강의 및 실습 자료
 - `week02/` : 두 번째 주 강의 및 실습 자료
+- `week03/` : HTML/CSS 실습 정리
+- `week04/` : JavaScript 실습 정리
+- `week05/` : Java, JSP 기초 정리
+- `week06/` : 객체지향 및 웹 프로젝트 구조 정리
+- `week07/` : Servlet 실습 정리
+- `week08/` : JSP 심화 및 계산기 실습 정리
+- `week09/` : useBean 계산기 실습 정리
+
+## 📝 주차별 README 총합본
+
+### week01
+- README.md 파일이 아직 없습니다.
+
+### week02
+- 이력서 연습 문서가 작성되어 있습니다.
+- 이름, 생년월일, 주소, 연락처, 가족관계, 학력 및 경력사항을 포함한 자기소개/이력서 형식의 실습입니다.
+
+### week03
+- HTML 태그 실습과 CSS 기본/레이아웃 실습을 정리했습니다.
+- CSS 선택자, 박스 모델, display, position, flex 레이아웃, 폼/테이블 스타일, 애니메이션, Bootstrap 반응형 레이아웃을 다룹니다.
+
+### week04
+- JavaScript 기초 실습을 정리했습니다.
+- 객체 생성과 메서드, 배열 평균과 filter, 반복문 재작성, 이미지 전환, 홀짝 전환 로직, To-Do 리스트 구현 내용을 포함합니다.
+
+### week05
+- JSP 기본 문법과 Java 기초 학습 내용을 정리했습니다.
+- `test.jsp`, `test2.jsp`, `test3.jsp`를 통해 page 지시어, 표현식, request 객체, 기본 출력 구조를 실습했습니다.
+- Java 변수, 배열, 문자열 처리, Scanner 입력, 구구단, 완전수 탐색도 함께 정리했습니다.
+
+### week06
+- 클래스, 인터페이스, 익명 클래스 기반 도형 실습을 정리했습니다.
+- `RectangleDemo`, `ShapeDemo`, `InterfaceDemo`, `ShapeAnonymous` 등을 통해 객체지향 설계와 다형성을 학습했습니다.
+- Maven 웹 프로젝트 구조, 서블릿 기본 클래스, pom.xml 설정도 함께 정리했습니다.
+
+### week07
+- Servlet 기반 HelloWorld와 계산기 실습을 정리했습니다.
+- `@WebServlet` 매핑, `doGet`, `doPost`, `getWriter()`를 이용한 응답 작성 흐름을 다룹니다.
+- 계산기 화면 구성, 파라미터 처리, 예외 메시지 출력, 소수점 계산 지원도 포함합니다.
+
+### week08
+- JSP include/선언문 실습과 계산기 프로젝트 정리를 포함합니다.
+- `jspTotal.jsp`, `randomNumber.jsp`를 통해 include, 선언문, 반복문 출력, 랜덤 숫자 활용을 실습했습니다.
+- 계산기 프로젝트는 입력/계산/출력 분리, forward 방식, 결과 페이지 분리를 중심으로 정리했습니다.
+
+### week09
+- 현재 README.md 파일은 없습니다.
+- 계산기 useBean 실습 프로젝트가 진행 중입니다.
 
 > 추가 주차 자료는 계속해서 이 저장소에 정리될 예정입니다.
 
